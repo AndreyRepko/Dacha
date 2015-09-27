@@ -11,11 +11,15 @@ namespace Dacha.Inspector
         public AWPInspectorViewModel()
         {
             _db = new Database();
+            _presenter = new PresenterFactory();
         }
 
         private RelayCommand _exitCommand;
         private RelayCommand _sectorCommand;
         private Database _db;
+        private IPresenterFactory _presenter;
+
+
         public RelayCommand ExitCommand => _exitCommand ?? (_exitCommand = new RelayCommand(Exit));
 
         public RelayCommand SectorCommand => _sectorCommand ?? (_sectorCommand = new RelayCommand(OpenSector));
@@ -24,10 +28,8 @@ namespace Dacha.Inspector
         {
             _db.WorkWithList<T>((list) =>
             {
-                var t = new DictionaryWindow();
                 var l = new DictionaryViewModel<T> {Dictionary = list};
-                t.DataContext = l;
-                t.ShowDialog();
+                _presenter.PresentDictionary<T>(l);
             });
         }
 
