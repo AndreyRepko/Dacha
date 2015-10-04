@@ -75,6 +75,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dictionaries\DictionaryAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dictionaries\DisplayDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AWPInspectorViewModel.cs" />
@@ -82,8 +90,16 @@
     <Compile Include="Dictionaries\DictionaryWindow.xaml.cs">
       <DependentUpon>DictionaryWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IPresenterFactory.cs" />
-    <Compile Include="PresenterFactory.cs" />
+    <Compile Include="Dictionaries\DictionaryAddViewModel.cs" />
+    <Compile Include="Dictionaries\DictionaryAddWindow.xaml.cs">
+      <DependentUpon>DictionaryAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dictionaries\DisplayDictionary.xaml.cs">
+      <DependentUpon>DisplayDictionary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dictionaries\DisplayDictionaryViewModel.cs" />
+    <Compile Include="Factories\IPresenterFactory.cs" />
+    <Compile Include="Factories\PresenterFactory.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -122,6 +138,7 @@
       <Name>WPFUtils</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

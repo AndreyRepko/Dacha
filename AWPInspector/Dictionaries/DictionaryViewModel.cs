@@ -7,11 +7,12 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Dacha.Inspector.Annotations;
+using Dacha.Inspector.Factories;
 using Dacha.WPFUtils;
 
 namespace Dacha.Inspector.Dictionaries
 {
-    public class DictionaryViewModel<T> : INotifyPropertyChanged
+    public class DictionaryViewModel<T> : INotifyPropertyChanged where T : new()
     {
         private List<T> _dictionary;
         private RelayCommand _addCommand;
@@ -19,9 +20,14 @@ namespace Dacha.Inspector.Dictionaries
         private readonly RelayCommand _removeCommand;
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public Func<List<T>> DictionaryGetter { get; set; }
+
         public List<T> Dictionary
         {
-            get { return _dictionary; }
+            get
+            {
+                return DictionaryGetter == null ? _dictionary : DictionaryGetter();
+            }
             set
             {
                 if (_dictionary != value)
@@ -32,9 +38,16 @@ namespace Dacha.Inspector.Dictionaries
             }
         }
 
-        public RelayCommand AddCommand
+        public RelayCommand AddCommand => _addCommand ?? (_addCommand = new RelayCommand(Add));
+
+        private void Add()
         {
-            get { return _addCommand; }
+            var addModel = new DictionaryAddViewModel<T>();
+            if (Presenter.PresentDicionaryAdd(addModel))
+            {
+                OnPropertyChanged(nameof(Dictionary));
+            }
+
         }
 
         public RelayCommand EditCommand
@@ -46,6 +59,8 @@ namespace Dacha.Inspector.Dictionaries
         {
             get { return _removeCommand; }
         }
+
+        public IPresenterFactory Presenter { get; set; }
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -44,6 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
+    <Compile Include="PropertyMappings\BasicPropertyViewModel.cs" />
+    <Compile Include="PropertyMappings\IntPropertyViewModel.cs" />
+    <Compile Include="PropertyMappings\IPropertyViewModel.cs" />
+    <Compile Include="PropertyMappings\StringPropertyViewModel.cs" />
     <Compile Include="WPFUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

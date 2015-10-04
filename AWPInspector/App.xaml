@@ -3,8 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:bypasser"
              xmlns:inspector="clr-namespace:Dacha.Inspector"
+             xmlns:dictionaries="clr-namespace:Dacha.Inspector.Dictionaries"
+             xmlns:propertyMappings="clr-namespace:WPFUtils.PropertyMappings;assembly=WPFUtils"
              StartupUri="AWPInspector.xaml">
     <Application.Resources>
         <inspector:AWPInspectorViewModel x:Key="AWPInspectorViewModel" />
+        
+        <DataTemplate DataType="{x:Type dictionaries:DisplayDictionaryViewModel}">
+            <dictionaries:DisplayDictionary/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=propertyMappings:StringPropertyViewModel}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding DisplayName}" Margin="5"/>
+                <TextBox Text ="{Binding Value}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=propertyMappings:IntPropertyViewModel}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding DisplayName}" Margin="5"/>
+                <TextBox Text ="{Binding Value}"/>
+            </StackPanel>
+        </DataTemplate>
+
     </Application.Resources>
 </Application>

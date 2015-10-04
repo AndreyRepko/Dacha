@@ -2,6 +2,7 @@
 using Dacha.DataModel;
 using Dacha.DataModel.NHibernate.Domain;
 using Dacha.Inspector.Dictionaries;
+using Dacha.Inspector.Factories;
 using Dacha.WPFUtils;
 
 namespace Dacha.Inspector
@@ -24,12 +25,16 @@ namespace Dacha.Inspector
 
         public RelayCommand SectorCommand => _sectorCommand ?? (_sectorCommand = new RelayCommand(OpenSector));
 
-        private void OpenDictionary<T>()
+        private void OpenDictionary<T>() where T : new()
         {
-            _db.WorkWithList<T>((list) =>
+            _db.WorkWithList<T>((refresher) =>
             {
-                var l = new DictionaryViewModel<T> {Dictionary = list};
-                _presenter.PresentDictionary<T>(l);
+                var dictionaryViewModel = new DictionaryViewModel<T>
+                {
+                    Presenter = _presenter,
+                    DictionaryGetter = refresher
+                };
+                _presenter.PresentDictionary<T>(dictionaryViewModel);
             });
         }
 

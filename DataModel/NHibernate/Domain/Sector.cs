@@ -10,7 +10,7 @@ namespace Dacha.DataModel.NHibernate.Domain {
             Places = new List<Places>();
         }
 
-        public virtual long Id { get; set; }
+        public virtual long Id { get; protected set; }
         public virtual string Name { get; set; }
         public virtual IList<Places> Places { get; set; }
     }
