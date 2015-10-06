@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Dacha.Inspector.Annotations;
-using WPFUtils.PropertyMappings;
+using Dacha.PropertyMappings.PropertyMappings;
 
 namespace Dacha.Inspector.Dictionaries
 {

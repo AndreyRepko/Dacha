@@ -35,10 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -132,6 +128,10 @@
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{472FC584-5051-44CF-BDD5-B3D1A8EBC12A}</Project>
       <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PropertyMappings\PropertyMappings.csproj">
+      <Project>{03c58f64-e85c-40a8-a7ef-f412b011a70d}</Project>
+      <Name>PropertyMappings</Name>
     </ProjectReference>
     <ProjectReference Include="..\WPFUtils\WPFUtils.csproj">
       <Project>{3DEF1497-36D1-4863-AF64-379D7DCBA93D}</Project>

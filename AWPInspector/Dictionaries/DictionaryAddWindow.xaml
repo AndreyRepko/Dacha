@@ -11,7 +11,7 @@
     <StackPanel>
         <ContentControl Content ="{Binding DictionaryContent}"/>
         <StackPanel Orientation="Horizontal">
-            <Button IsDefault="True">OK</Button>
+            <Button IsDefault="True" Click="Button_Click">OK</Button>
             <Button IsCancel="True">Cancel</Button>
         </StackPanel>
     </StackPanel>

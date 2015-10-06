@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace WPFUtils.PropertyMappings
+namespace Dacha.PropertyMappings.PropertyMappings
 {
     public class BasicPropertyViewModel<T> : IPropertyViewModel
     {

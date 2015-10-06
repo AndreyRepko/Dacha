@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModelTest", "DataModelT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate", "..\NHibernate\nhibernate-core\src\NHibernate\NHibernate.csproj", "{5909BFE7-93CF-4E5F-BE22-6293368AF01D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyMappings", "PropertyMappings\PropertyMappings.csproj", "{03C58F64-E85C-40A8-A7EF-F412B011A70D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5909BFE7-93CF-4E5F-BE22-6293368AF01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5909BFE7-93CF-4E5F-BE22-6293368AF01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5909BFE7-93CF-4E5F-BE22-6293368AF01D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03C58F64-E85C-40A8-A7EF-F412B011A70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C58F64-E85C-40A8-A7EF-F412B011A70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C58F64-E85C-40A8-A7EF-F412B011A70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C58F64-E85C-40A8-A7EF-F412B011A70D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

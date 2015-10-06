@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:bypasser"
              xmlns:inspector="clr-namespace:Dacha.Inspector"
              xmlns:dictionaries="clr-namespace:Dacha.Inspector.Dictionaries"
-             xmlns:propertyMappings="clr-namespace:WPFUtils.PropertyMappings;assembly=WPFUtils"
+             xmlns:propertyMappings="clr-namespace:Dacha.PropertyMappings.PropertyMappings;assembly=PropertyMappings"
              StartupUri="AWPInspector.xaml">
     <Application.Resources>
         <inspector:AWPInspectorViewModel x:Key="AWPInspectorViewModel" />
