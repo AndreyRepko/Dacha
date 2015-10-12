@@ -21,12 +21,15 @@ namespace Dacha.Inspector.Dictionaries
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Func<List<T>> DictionaryGetter { get; set; }
+        public Action<T> DictionaryAdder { get; set; }
+        public Action<T> DictionaryDeleter { get; set; }
+
 
         public List<T> Dictionary
         {
             get
             {
-                return DictionaryGetter == null ? _dictionary : DictionaryGetter();
+                return _dictionary ?? (_dictionary = DictionaryGetter());
             }
             set
             {
@@ -45,6 +48,7 @@ namespace Dacha.Inspector.Dictionaries
             var addModel = new DictionaryAddViewModel<T>();
             if (Presenter.PresentDicionaryAdd(addModel))
             {
+                Dictionary.Add(addModel.Value);
                 OnPropertyChanged(nameof(Dictionary));
             }
 

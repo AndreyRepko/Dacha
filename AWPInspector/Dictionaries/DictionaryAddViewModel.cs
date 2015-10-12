@@ -3,18 +3,20 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Dacha.Inspector.Annotations;
+using Dacha.PropertyMappings;
 using Dacha.PropertyMappings.PropertyMappings;
 
 namespace Dacha.Inspector.Dictionaries
 {
     public class DictionaryAddViewModel<T>: INotifyPropertyChanged where T : new()
     {
-        private T _value;
+        public T Value { get; }
+
         public DictionaryAddViewModel()
         {
-            _value = new T();
+            Value = new T();
             DictionaryContent = new DisplayDictionaryViewModel();
-            DictionaryContent.Fields = new ObservableCollection<IPropertyViewModel> {new StringPropertyViewModel() {DisplayName = "blabla", Value = "scuko"} };
+            DictionaryContent.Fields = ClassToFieldsMapper.GetFieldsFromClass(Value);
         } 
 
         public DisplayDictionaryViewModel DictionaryContent { get; set; }

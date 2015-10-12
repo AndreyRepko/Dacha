@@ -43,7 +43,7 @@ namespace Dacha.DataModel
 
         }
 
-        public void WorkWithList<T>(Action<Func<List<T>>> work)
+        public void WorkWithList<T>(Action<Func<List<T>>, Action<T>, Action<T>> work)
         {
             /* Create a session and execute a query: */
             using (ISessionFactory factory = _config.BuildSessionFactory())
@@ -51,7 +51,7 @@ namespace Dacha.DataModel
             using (ITransaction tx = session.BeginTransaction())
             {
                 Func<List<T>> refresher = () => session.Query<T>().ToList();
-                work(refresher);
+                work(refresher, (t) => session.SaveOrUpdate(t), (t) => session.Delete(t));
 
                 tx.Commit();
             }

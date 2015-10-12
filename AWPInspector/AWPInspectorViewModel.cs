@@ -27,12 +27,14 @@ namespace Dacha.Inspector
 
         private void OpenDictionary<T>() where T : new()
         {
-            _db.WorkWithList<T>((refresher) =>
+            _db.WorkWithList<T>((refresher, saver, deleter) =>
             {
                 var dictionaryViewModel = new DictionaryViewModel<T>
                 {
                     Presenter = _presenter,
-                    DictionaryGetter = refresher
+                    DictionaryGetter = refresher,
+                    DictionaryAdder = saver,
+                    DictionaryDeleter = deleter
                 };
                 _presenter.PresentDictionary<T>(dictionaryViewModel);
             });
