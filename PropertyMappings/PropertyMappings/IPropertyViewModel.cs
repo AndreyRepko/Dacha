@@ -7,5 +7,7 @@ namespace Dacha.PropertyMappings.PropertyMappings
         string DisplayName { get; set; }
 
         object UntypedValue { get; }
+
+        string PropertyName { get; }
     }
 }

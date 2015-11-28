@@ -47,6 +47,7 @@
     <Compile Include="PropertyMappings\IntPropertyViewModel.cs" />
     <Compile Include="PropertyMappings\IPropertyViewModel.cs" />
     <Compile Include="PropertyMappings\StringPropertyViewModel.cs" />
+    <Compile Include="TrulyObservableCollection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

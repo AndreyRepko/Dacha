@@ -10,14 +10,19 @@ namespace Dacha.Inspector.Dictionaries
 {
     public class DictionaryAddViewModel<T>: INotifyPropertyChanged where T : new()
     {
-        public T Value { get; }
+        private T _value;
+
+        public T Value
+        {
+            get { return _value; }
+        }
 
         public DictionaryAddViewModel()
         {
-            Value = new T();
+            _value = new T();
             DictionaryContent = new DisplayDictionaryViewModel();
             DictionaryContent.Fields = ClassToFieldsMapper.GetFieldsFromClass(Value);
-            DictionaryContent.Fields.CollectionChanged += ClassToFieldsMapper.FieldsUpdaterEvent;
+            DictionaryContent.Fields.CollectionChanged += (sender, e)=>ClassToFieldsMapper.FieldsUpdater(ref _value, sender, e);
         } 
 
         public DisplayDictionaryViewModel DictionaryContent { get; set; }

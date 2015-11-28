@@ -1,5 +1,6 @@
 using Dacha.DataModel.Domain;
 using Dacha.DataModel.NHibernate.Domain;
+using NHibernate.Id;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
@@ -12,7 +13,7 @@ namespace Dacha.DataModel.NHibernate.Maping {
 			Schema("public");
             Table("sectors");
 			Lazy(true);
-			Id(x => x.Id, map => map.Generator(Generators.Assigned));
+			Id(x => x.Id, map => map.Generator(Generators.SequenceHiLo, g => g.Params(new { sequence = "sectors_id_seq" })));
 			Property(x => x.Name);
             List(x => x.Places,
                 x =>

@@ -27,5 +27,6 @@ namespace Dacha.PropertyMappings.PropertyMappings
         }
 
         public object UntypedValue => _value;
+        public string PropertyName { get; set; }
     }
 }
