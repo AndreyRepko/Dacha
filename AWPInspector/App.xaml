@@ -15,13 +15,13 @@
         <DataTemplate DataType="{x:Type TypeName=propertyMappings:StringPropertyViewModel}">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding DisplayName}" Margin="5"/>
-                <TextBox Text ="{Binding Value}"/>
+                <TextBox Text ="{Binding Value, Mode=TwoWay}"/>
             </StackPanel>
         </DataTemplate>
         <DataTemplate DataType="{x:Type TypeName=propertyMappings:IntPropertyViewModel}">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding DisplayName}" Margin="5"/>
-                <TextBox Text ="{Binding Value}"/>
+                <TextBox Text ="{Binding Value, Mode=TwoWay}"/>
             </StackPanel>
         </DataTemplate>
 

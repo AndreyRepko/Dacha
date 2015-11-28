@@ -25,21 +25,7 @@ namespace Dacha.Inspector.Dictionaries
         public Action<T> DictionaryDeleter { get; set; }
 
 
-        public List<T> Dictionary
-        {
-            get
-            {
-                return _dictionary ?? (_dictionary = DictionaryGetter());
-            }
-            set
-            {
-                if (_dictionary != value)
-                {
-                    _dictionary = value;
-                    OnPropertyChanged(nameof(Dictionary));
-                }
-            }
-        }
+        public List<T> Dictionary => DictionaryGetter();
 
         public RelayCommand AddCommand => _addCommand ?? (_addCommand = new RelayCommand(Add));
 
@@ -48,7 +34,7 @@ namespace Dacha.Inspector.Dictionaries
             var addModel = new DictionaryAddViewModel<T>();
             if (Presenter.PresentDicionaryAdd(addModel))
             {
-                Dictionary.Add(addModel.Value);
+                DictionaryAdder(addModel.Value);
                 OnPropertyChanged(nameof(Dictionary));
             }
 

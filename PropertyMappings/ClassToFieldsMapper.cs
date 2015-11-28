@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using Dacha.PropertyMappings.PropertyMappings;
@@ -49,6 +50,36 @@ namespace Dacha.PropertyMappings
             }
 
             return result;
-        } 
+        }
+
+        public static void FieldsUpdater<T>(ref T value, object sender, NotifyCollectionChangedEventArgs e) 
+        {
+            var type = typeof(T);
+            var properties = type.GetProperties().Where(prop => prop.IsDefined(typeof(PropertyMapping), false));
+            foreach (var prop in properties)
+            {
+                var attributes = (PropertyMapping[])prop.GetCustomAttributes(typeof(PropertyMapping), false);
+                if (attributes.Length == 1)
+                {
+                    var propType = prop.PropertyType;
+                    if (!_typeMaping.ContainsKey(propType))
+                        throw new Exception($"Type mapping missing for {propType}");
+                    var mapper = _typeMaping[propType];
+
+                  /*  result.Add(value != null
+                        ? mapper(attributes[0].DisplayName, prop.GetValue(value, null))
+                        : mapper(attributes[0].DisplayName, null));*/
+                }
+                else
+                {
+                    throw new Exception($"Invalid attribute count {attributes.Length}");
+                }
+            }
+        }
+
+        public static void FieldsUpdaterEvent(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

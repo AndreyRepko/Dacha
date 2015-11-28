@@ -17,6 +17,7 @@ namespace Dacha.Inspector.Dictionaries
             Value = new T();
             DictionaryContent = new DisplayDictionaryViewModel();
             DictionaryContent.Fields = ClassToFieldsMapper.GetFieldsFromClass(Value);
+            DictionaryContent.Fields.CollectionChanged += ClassToFieldsMapper.FieldsUpdaterEvent;
         } 
 
         public DisplayDictionaryViewModel DictionaryContent { get; set; }
