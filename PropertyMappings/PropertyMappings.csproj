@@ -48,9 +48,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyMappingAttribute.cs" />
     <Compile Include="PropertyMappings\BasicPropertyViewModel.cs" />
+    <Compile Include="PropertyMappings\DoublePropertyViewModel.cs" />
     <Compile Include="PropertyMappings\IntPropertyViewModel.cs" />
     <Compile Include="PropertyMappings\IPropertyViewModel.cs" />
     <Compile Include="PropertyMappings\StringPropertyViewModel.cs" />
+    <Compile Include="PropertyPresenters\DoublePropertyPresenter.xaml.cs">
+      <DependentUpon>DoublePropertyPresenter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PropertyPresenters\IntPropertyPresenter.xaml.cs">
       <DependentUpon>IntPropertyPresenter.xaml</DependentUpon>
     </Compile>
@@ -60,6 +64,10 @@
     <Compile Include="TrulyObservableCollection.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="PropertyPresenters\DoublePropertyPresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PropertyPresenters\IntPropertyPresenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

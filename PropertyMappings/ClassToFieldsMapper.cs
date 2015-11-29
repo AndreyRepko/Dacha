@@ -20,6 +20,10 @@ namespace Dacha.PropertyMappings
                 (displayName, value, propertyName) => new StringPropertyViewModel {DisplayName = displayName, Value = (string) value, PropertyName = propertyName};
             _typeMaping[typeof (int)] =
                 (displayName, value, propertyName) => new IntPropertyViewModel {DisplayName = displayName, Value = (int) value, PropertyName = propertyName };
+            _typeMaping[typeof(double?)] =
+                (displayName, value, propertyName) => new DoublePropertyViewModel { DisplayName = displayName, Value = (double?)value, PropertyName = propertyName };
+            _typeMaping[typeof(double)] =
+                (displayName, value, propertyName) => new DoublePropertyViewModel { DisplayName = displayName, Value = (double)value, PropertyName = propertyName };
 
         }
 

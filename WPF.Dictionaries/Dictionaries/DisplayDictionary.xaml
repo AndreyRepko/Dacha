@@ -9,10 +9,10 @@
              d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance Type=dictionaries:DisplayDictionaryViewModel, IsDesignTimeCreatable=True}">
     <ItemsControl
-        ItemsSource="{Binding Fields}">
+        ItemsSource="{Binding Fields}" >
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
-                <StackPanel Orientation="Horizontal"/>
+                <StackPanel Orientation="Vertical"/>
             </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
