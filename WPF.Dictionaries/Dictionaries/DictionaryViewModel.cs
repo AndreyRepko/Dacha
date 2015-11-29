@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Dacha.Inspector.Annotations;
-using Dacha.Inspector.Factories;
 using Dacha.WPFUtils;
+using WPF.Dictionaries.Factories;
 
-namespace Dacha.Inspector.Dictionaries
+namespace WPF.Dictionaries.Dictionaries
 {
     public class DictionaryViewModel<T> : INotifyPropertyChanged where T : new()
     {
@@ -52,7 +48,6 @@ namespace Dacha.Inspector.Dictionaries
 
         public IPresenterFactory Presenter { get; set; }
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

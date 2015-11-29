@@ -1,6 +1,6 @@
-﻿using Dacha.Inspector.Dictionaries;
+﻿using WPF.Dictionaries.Dictionaries;
 
-namespace Dacha.Inspector.Factories
+namespace WPF.Dictionaries.Factories
 {
     public interface IPresenterFactory
     {

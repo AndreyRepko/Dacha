@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:bypasser"
              xmlns:inspector="clr-namespace:Dacha.Inspector"
-             xmlns:dictionaries="clr-namespace:Dacha.Inspector.Dictionaries"
+             xmlns:dictionaries="clr-namespace:WPF.Dictionaries.Dictionaries;assembly=WPF.Dictionaries"
              xmlns:propertyMappings="clr-namespace:Dacha.PropertyMappings.PropertyMappings;assembly=PropertyMappings"
              StartupUri="AWPInspector.xaml">
     <Application.Resources>

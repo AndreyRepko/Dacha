@@ -67,36 +67,9 @@
       <DependentUpon>AWPInspector.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Dictionaries\DictionaryWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dictionaries\DictionaryAddWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dictionaries\DisplayDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AWPInspectorViewModel.cs" />
-    <Compile Include="Dictionaries\DictionaryViewModel.cs" />
-    <Compile Include="Dictionaries\DictionaryWindow.xaml.cs">
-      <DependentUpon>DictionaryWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dictionaries\DictionaryAddViewModel.cs" />
-    <Compile Include="Dictionaries\DictionaryAddWindow.xaml.cs">
-      <DependentUpon>DictionaryAddWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dictionaries\DisplayDictionary.xaml.cs">
-      <DependentUpon>DisplayDictionary.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dictionaries\DisplayDictionaryViewModel.cs" />
-    <Compile Include="Factories\IPresenterFactory.cs" />
-    <Compile Include="Factories\PresenterFactory.cs" />
-    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -130,8 +103,12 @@
       <Name>DataModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\PropertyMappings\PropertyMappings.csproj">
-      <Project>{03c58f64-e85c-40a8-a7ef-f412b011a70d}</Project>
+      <Project>{03C58F64-E85C-40A8-A7EF-F412B011A70D}</Project>
       <Name>PropertyMappings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WPF.Dictionaries\WPF.Dictionaries.csproj">
+      <Project>{5E56B0F1-FFF7-4FB9-802A-EF83FB209CF8}</Project>
+      <Name>WPF.Dictionaries</Name>
     </ProjectReference>
     <ProjectReference Include="..\WPFUtils\WPFUtils.csproj">
       <Project>{3DEF1497-36D1-4863-AF64-379D7DCBA93D}</Project>

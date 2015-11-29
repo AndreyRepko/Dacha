@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Dacha.Inspector.Dictionaries
+namespace WPF.Dictionaries.Dictionaries
 {
     /// <summary>
     /// Interaction logic for DictionaryAddWindow.xaml

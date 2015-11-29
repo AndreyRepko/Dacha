@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using Dacha.DataModel;
 using Dacha.DataModel.NHibernate.Domain;
-using Dacha.Inspector.Dictionaries;
-using Dacha.Inspector.Factories;
 using Dacha.WPFUtils;
+using WPF.Dictionaries.Dictionaries;
+using WPF.Dictionaries.Factories;
 
 namespace Dacha.Inspector
 {
@@ -17,8 +17,8 @@ namespace Dacha.Inspector
 
         private RelayCommand _exitCommand;
         private RelayCommand _sectorCommand;
-        private Database _db;
-        private IPresenterFactory _presenter;
+        private readonly Database _db;
+        private readonly IPresenterFactory _presenter;
 
 
         public RelayCommand ExitCommand => _exitCommand ?? (_exitCommand = new RelayCommand(Exit));

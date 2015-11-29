@@ -1,7 +1,7 @@
 ﻿using System;
-using Dacha.Inspector.Dictionaries;
+using WPF.Dictionaries.Dictionaries;
 
-namespace Dacha.Inspector.Factories
+namespace WPF.Dictionaries.Factories
 {
     public class PresenterFactory : IPresenterFactory
     {
@@ -15,10 +15,10 @@ namespace Dacha.Inspector.Factories
         {
             var addWindow = new DictionaryAddWindow {DataContext = addViewModel};
             addWindow.ShowDialog();
-            if (!addWindow.DialogResult.HasValue)
+            if (!addViewModel.DialogResult.HasValue)
                 throw new Exception("Dialog was closed without result");
 
-            return addWindow.DialogResult.Value;
+            return addViewModel.DialogResult.Value;
         }
     }
 }

@@ -1,15 +1,14 @@
-﻿<Window x:Class="Dacha.Inspector.Dictionaries.DictionaryAddWindow"
+﻿<Window x:Class="WPF.Dictionaries.Dictionaries.DictionaryAddWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dacha.Inspector"
         wpfUtils:DialogCloser.DialogResult="{Binding DialogResult}"
-        xmlns:dictionaries="clr-namespace:Dacha.Inspector.Dictionaries"
         xmlns:wpfUtils="clr-namespace:WPFUtils;assembly=WPFUtils"
+        xmlns:dictionaries1="clr-namespace:WPF.Dictionaries.Dictionaries"
         mc:Ignorable="d"
         Title="DictionaryAddWindow" Height="300" Width="300"
-        d:DataContext="{d:DesignInstance Type=dictionaries:DictionaryAddViewModelDummy, IsDesignTimeCreatable=True}">
+        d:DataContext="{d:DesignInstance Type=dictionaries1:DictionaryAddViewModelDummy, IsDesignTimeCreatable=True}">
     <StackPanel>
         <ContentControl Content ="{Binding DictionaryContent}"/>
         <StackPanel Orientation="Horizontal">

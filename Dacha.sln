@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate", "..\NHibernate
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyMappings", "PropertyMappings\PropertyMappings.csproj", "{03C58F64-E85C-40A8-A7EF-F412B011A70D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Dictionaries", "WPF.Dictionaries\WPF.Dictionaries.csproj", "{5E56B0F1-FFF7-4FB9-802A-EF83FB209CF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{03C58F64-E85C-40A8-A7EF-F412B011A70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03C58F64-E85C-40A8-A7EF-F412B011A70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03C58F64-E85C-40A8-A7EF-F412B011A70D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E56B0F1-FFF7-4FB9-802A-EF83FB209CF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E56B0F1-FFF7-4FB9-802A-EF83FB209CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E56B0F1-FFF7-4FB9-802A-EF83FB209CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E56B0F1-FFF7-4FB9-802A-EF83FB209CF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

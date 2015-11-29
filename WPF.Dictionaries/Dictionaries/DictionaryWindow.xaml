@@ -1,12 +1,12 @@
-﻿<Window x:Class="Dacha.Inspector.Dictionaries.DictionaryWindow"
+﻿<Window x:Class="WPF.Dictionaries.Dictionaries.DictionaryWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dacha.Inspector.Dictionaries"
+        xmlns:dictionaries="clr-namespace:WPF.Dictionaries.Dictionaries"
         mc:Ignorable="d"
         Title="DictionaryWindow" Height="300" Width="300"
-        d:DataContext="{d:DesignInstance Type=local:DictionaryViewModelDummy, IsDesignTimeCreatable=True}">
+        d:DataContext="{d:DesignInstance Type=dictionaries:DictionaryViewModelDummy, IsDesignTimeCreatable=True}">
     <StackPanel>
         <DataGrid ItemsSource="{Binding Dictionary}" IsReadOnly="True" ></DataGrid>
         <StackPanel Orientation="Horizontal">

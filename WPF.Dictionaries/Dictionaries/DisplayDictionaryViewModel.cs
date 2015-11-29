@@ -1,10 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Dacha.Inspector.Annotations;
 using Dacha.PropertyMappings.PropertyMappings;
 
-namespace Dacha.Inspector.Dictionaries
+namespace WPF.Dictionaries.Dictionaries
 {
     public class DisplayDictionaryViewModel : INotifyPropertyChanged
     {
@@ -24,7 +23,6 @@ namespace Dacha.Inspector.Dictionaries
             }
         }
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
