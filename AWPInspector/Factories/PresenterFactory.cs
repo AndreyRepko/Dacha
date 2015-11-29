@@ -14,10 +14,11 @@ namespace Dacha.Inspector.Factories
         public bool PresentDicionaryAdd<T>(DictionaryAddViewModel<T> addViewModel) where T : new()
         {
             var addWindow = new DictionaryAddWindow {DataContext = addViewModel};
-            var result = addWindow.ShowDialog();
-            if (!result.HasValue)
+            addWindow.ShowDialog();
+            if (!addWindow.DialogResult.HasValue)
                 throw new Exception("Dialog was closed without result");
-            return result.Value;
+
+            return addWindow.DialogResult.Value;
         }
     }
 }
