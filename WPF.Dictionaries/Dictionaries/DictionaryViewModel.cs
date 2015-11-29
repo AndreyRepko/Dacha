@@ -33,7 +33,6 @@ namespace WPF.Dictionaries.Dictionaries
                 DictionaryAdder(addModel.Value);
                 OnPropertyChanged(nameof(Dictionary));
             }
-
         }
 
         public RelayCommand EditCommand

@@ -5,6 +5,7 @@
              xmlns:inspector="clr-namespace:Dacha.Inspector"
              xmlns:dictionaries="clr-namespace:WPF.Dictionaries.Dictionaries;assembly=WPF.Dictionaries"
              xmlns:propertyMappings="clr-namespace:Dacha.PropertyMappings.PropertyMappings;assembly=PropertyMappings"
+             xmlns:propertyPresenters="clr-namespace:Dacha.PropertyMappings.PropertyPresenters;assembly=PropertyMappings"
              StartupUri="AWPInspector.xaml">
     <Application.Resources>
         <inspector:AWPInspectorViewModel x:Key="AWPInspectorViewModel" />
@@ -12,17 +13,11 @@
         <DataTemplate DataType="{x:Type dictionaries:DisplayDictionaryViewModel}">
             <dictionaries:DisplayDictionary/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type TypeName=propertyMappings:StringPropertyViewModel}">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding DisplayName}" Margin="5"/>
-                <TextBox Text ="{Binding Value, Mode=TwoWay}"/>
-            </StackPanel>
+        <DataTemplate DataType="{x:Type propertyMappings:StringPropertyViewModel}">
+            <propertyPresenters:StringPropertyPresenter/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type TypeName=propertyMappings:IntPropertyViewModel}">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding DisplayName}" Margin="5"/>
-                <TextBox Text ="{Binding Value, Mode=TwoWay}"/>
-            </StackPanel>
+            <propertyPresenters:IntPropertyPresenter/>
         </DataTemplate>
 
     </Application.Resources>

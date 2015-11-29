@@ -43,6 +43,14 @@ namespace Dacha.DataModel
 
         }
 
+
+        /// <summary>
+        /// NHibernate worker that do all work:
+        /// 1. Func<List<T>> - is about getting table content
+        /// 2. Action<T> - about 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="work"></param>
         public void WorkWithList<T>(Action<Func<List<T>>, Action<T>, Action<T>> work)
         {
             /* Create a session and execute a query: */
