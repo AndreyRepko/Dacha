@@ -11,14 +11,20 @@ namespace WPF.Dictionaries.Factories
             t.ShowDialog();
         }
 
-        public bool PresentDicionaryAdd<T>(DictionaryAddViewModel<T> addViewModel) where T : new()
+        public bool PresentDicionaryAdd<T>(DictionaryAddEditViewModel<T> addEditViewModel) where T : new()
         {
-            var addWindow = new DictionaryAddWindow {DataContext = addViewModel};
+            var addWindow = new DictionaryAddWindow {DataContext = addEditViewModel};
             addWindow.ShowDialog();
-            if (!addViewModel.DialogResult.HasValue)
+            if (!addEditViewModel.DialogResult.HasValue)
                 throw new Exception("Dialog was closed without result");
 
-            return addViewModel.DialogResult.Value;
+            return addEditViewModel.DialogResult.Value;
+        }
+
+        public bool PresentRemove()
+        {
+            //TODO: Ask user before deletion!
+            return true;
         }
     }
 }

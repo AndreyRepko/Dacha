@@ -8,7 +8,7 @@
         xmlns:dictionaries1="clr-namespace:WPF.Dictionaries.Dictionaries"
         mc:Ignorable="d"
         Title="DictionaryAddWindow" Height="300" Width="300"
-        d:DataContext="{d:DesignInstance Type=dictionaries1:DictionaryAddViewModelDummy, IsDesignTimeCreatable=True}">
+        d:DataContext="{d:DesignInstance Type=dictionaries1:DictionaryAddEditViewModelDummy, IsDesignTimeCreatable=True}">
     <StackPanel>
         <ContentControl Content ="{Binding DictionaryContent}"/>
         <StackPanel Orientation="Horizontal">

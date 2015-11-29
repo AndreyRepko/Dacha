@@ -6,7 +6,7 @@ using Dacha.WPFUtils;
 
 namespace WPF.Dictionaries.Dictionaries
 {
-    public class DictionaryAddViewModel<T>: INotifyPropertyChanged where T : new()
+    public class DictionaryAddEditViewModel<T>: INotifyPropertyChanged where T : new()
     {
         private T _value;
         private bool? _dialogResult;
@@ -17,14 +17,25 @@ namespace WPF.Dictionaries.Dictionaries
             get { return _value; }
         }
 
-        public DictionaryAddViewModel()
+        public DictionaryAddEditViewModel()
         {
             _value = new T();
+            SetupContent();
+        }
+
+        public DictionaryAddEditViewModel(T editValue)
+        {
+            _value = editValue;
+            SetupContent();
+        }
+
+        private void SetupContent()
+        {
             DictionaryContent = new DisplayDictionaryViewModel();
             DictionaryContent.Fields = ClassToFieldsMapper.GetFieldsFromClass(Value);
-            DictionaryContent.Fields.CollectionChanged += (sender, e)=>ClassToFieldsMapper.FieldsUpdater(ref _value, sender, e);
+            DictionaryContent.Fields.CollectionChanged += (sender, e) => ClassToFieldsMapper.FieldsUpdater(ref _value, sender, e);
             DialogResult = false;
-        } 
+        }
 
         public DisplayDictionaryViewModel DictionaryContent { get; set; }
 
@@ -52,6 +63,6 @@ namespace WPF.Dictionaries.Dictionaries
     }
 
     [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
-    public class DictionaryAddViewModelDummy : DictionaryAddViewModel<int> {
+    public class DictionaryAddEditViewModelDummy : DictionaryAddEditViewModel<int> {
     }
 }

@@ -33,7 +33,7 @@ namespace Dacha.Inspector
                 {
                     Presenter = _presenter,
                     DictionaryGetter = refresher,
-                    DictionaryAdder = saver,
+                    DictionarySaver = saver,
                     DictionaryDeleter = deleter
                 };
                 _presenter.PresentDictionary<T>(dictionaryViewModel);

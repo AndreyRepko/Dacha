@@ -8,7 +8,7 @@
         Title="DictionaryWindow" Height="300" Width="300"
         d:DataContext="{d:DesignInstance Type=dictionaries:DictionaryViewModelDummy, IsDesignTimeCreatable=True}">
     <StackPanel>
-        <DataGrid ItemsSource="{Binding Dictionary}" IsReadOnly="True" ></DataGrid>
+        <DataGrid ItemsSource="{Binding Dictionary}" IsReadOnly="True" SelectedItem="{Binding SelectedItem}"></DataGrid>
         <StackPanel Orientation="Horizontal">
             <Button Command="{Binding AddCommand}">Add</Button>
             <Button Command="{Binding EditCommand}">Edit</Button>
