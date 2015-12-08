@@ -27,7 +27,8 @@ namespace Dacha.DataModel.NHibernate.Maping {
                 x.Column("owner_id");
                 x.NotNullable(false);
                 x.Lazy(LazyRelation.Proxy);
-            }); Property(x => x.ElectricityId, map => map.Column("electricity_id"));
+            });
+            Property(x => x.ElectricityId, map => map.Column("electricity_id"));
         }
     }
 }

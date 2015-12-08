@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BasicDataStructures.DataStructures;
-using WPFUtils;
 
 namespace Dacha.PropertyMappings.PropertyMappings
 {
@@ -26,6 +23,12 @@ namespace Dacha.PropertyMappings.PropertyMappings
                     return _items;
                 return _items = ItemsGetter();
             }
+        }
+
+        protected override void SetValue(long? value)
+        {
+            base.SetValue(value);
+            SelectedItem = Items.FirstOrDefault(item => item.Id == value);
         }
 
         public Func<List<ItemPresenterViewModel>> ItemsGetter { get; private set; }

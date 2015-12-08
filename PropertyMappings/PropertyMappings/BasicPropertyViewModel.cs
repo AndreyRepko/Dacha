@@ -8,17 +8,19 @@ namespace Dacha.PropertyMappings.PropertyMappings
         public string DisplayName { get; set; }
         private T _value;
 
+        protected virtual void SetValue(T value)
+        {
+            if (!Equals(_value, value))
+            {
+                _value = value;
+                OnPropertyChanged(nameof(Value));
+            }
+        }
+
         public T Value
         {
             get { return _value; }
-            set
-            {
-                if (!Equals(_value, value))
-                {
-                    _value = value;
-                    OnPropertyChanged(nameof(Value));
-                }
-            }
+            set { SetValue(value); }
         }
 
         protected virtual void OnPropertyChanged(string propertyName = null)

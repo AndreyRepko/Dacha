@@ -89,10 +89,12 @@ namespace Dacha.PropertyMappings
         private IPropertyViewModel GetLinkViewModel(string displayName, object value, string propertyName, 
             Func<List<ItemPresenterViewModel>> itemsGetter)
         {
+            //Sorry guys, cruel hack. Dont want to use inheritance for all domain entitites. At least for now
+            long? id = value==null ? null : ((dynamic) value).Id;
             return new LinkPropertyViewModel(itemsGetter)
             {
                 DisplayName = displayName,
-                Value = (long?)value,
+                Value = id,
                 PropertyName = propertyName
             };
         }

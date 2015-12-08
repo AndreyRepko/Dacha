@@ -20,12 +20,15 @@ namespace Dacha.Inspector
         private readonly Database _db;
         private readonly IPresenterFactory _presenter;
         private RelayCommand _placesCommand;
+        private RelayCommand _ownersCommand;
 
         public RelayCommand ExitCommand => _exitCommand ?? (_exitCommand = new RelayCommand(Exit));
 
-        public RelayCommand SectorCommand => _sectorCommand ?? (_sectorCommand = new RelayCommand(OpenSector));
+        public RelayCommand SectorCommand => _sectorCommand ?? (_sectorCommand = new RelayCommand(OpenDictionary<Sector>));
 
-        public RelayCommand PlacesCommand => _placesCommand ?? (_placesCommand = new RelayCommand(OpenPlaces));
+        public RelayCommand PlacesCommand => _placesCommand ?? (_placesCommand = new RelayCommand(OpenDictionary<Places>));
+
+        public RelayCommand OwnersCommand => _ownersCommand ?? (_ownersCommand = new RelayCommand(OpenDictionary<Owner>));
 
         private void OpenDictionary<T>() where T : new()
         {
@@ -41,16 +44,6 @@ namespace Dacha.Inspector
                 };
                 _presenter.PresentDictionary<T>(dictionaryViewModel);
             });
-        }
-
-        private void OpenSector()
-        {
-            OpenDictionary<Sector>();
-        }
-
-        private void OpenPlaces()
-        {
-            OpenDictionary<Places>();
         }
 
         private void Exit()
