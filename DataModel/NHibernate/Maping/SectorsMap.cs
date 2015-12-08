@@ -1,3 +1,4 @@
+using System;
 using Dacha.DataModel.Domain;
 using Dacha.DataModel.NHibernate.Domain;
 using NHibernate.Id;
@@ -28,6 +29,7 @@ namespace Dacha.DataModel.NHibernate.Maping {
                     x.Lazy(CollectionLazy.Lazy);
                     x.Fetch(CollectionFetchMode.Join);
                     x.Table("places");
+                    x.Inverse(true);
                 },
                 x =>
                 {

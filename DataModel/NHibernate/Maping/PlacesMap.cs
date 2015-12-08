@@ -18,7 +18,7 @@ namespace Dacha.DataModel.NHibernate.Maping {
             ManyToOne(x => x.Sector, x =>
             {
                 x.Column("sector_id");
-                x.NotNullable(true);
+                x.NotNullable(false);
                 x.Lazy(LazyRelation.Proxy);
             });
 			Property(x => x.PlaceNumber, map => map.Column("place_number"));
