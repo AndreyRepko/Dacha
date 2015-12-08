@@ -22,6 +22,9 @@
         <DataTemplate DataType="{x:Type propertyMappings:DoublePropertyViewModel}">
             <propertyPresenters:DoublePropertyPresenter/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type propertyMappings:LinkPropertyViewModel}">
+            <propertyPresenters:LinkPropertyPresenter/>
+        </DataTemplate>
 
     </Application.Resources>
 </Application>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Reflection;
+using Dacha.DataModel;
 using Dacha.DataModel.Domain;
 using Dacha.DataModel.NHibernate;
+using Dacha.DataModel.NHibernate.Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
 using NHibernate.Cfg;
@@ -42,6 +44,10 @@ namespace DataModelTest
             using (ITransaction tx = session.BeginTransaction())
             {
                 var car = session.Get<Cars>((long)1);
+
+                var worker = new WorkerServices(cfg, session);
+
+                var result = worker.GetItemsPresenterForEntity(typeof (Sector));
                 //session.Save()
 
                 tx.Commit();

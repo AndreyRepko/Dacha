@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using BasicDataStructures.Interfaces;
 using Dacha.PropertyMappings;
 using Dacha.WPFUtils;
 
@@ -11,29 +12,32 @@ namespace WPF.Dictionaries.Dictionaries
         private T _value;
         private bool? _dialogResult;
         private RelayCommand _okayCommand;
+        private ClassToFieldsMapper _fieldsMapper;
 
         public T Value
         {
             get { return _value; }
         }
 
-        public DictionaryAddEditViewModel()
+        public DictionaryAddEditViewModel(IWorkerServices dataServices)
         {
             _value = new T();
+            _fieldsMapper = new ClassToFieldsMapper(dataServices);
             SetupContent();
         }
 
-        public DictionaryAddEditViewModel(T editValue)
+        public DictionaryAddEditViewModel(T editValue, IWorkerServices dataServices)
         {
             _value = editValue;
+            _fieldsMapper = new ClassToFieldsMapper(dataServices);
             SetupContent();
         }
 
         private void SetupContent()
         {
             DictionaryContent = new DisplayDictionaryViewModel();
-            DictionaryContent.Fields = ClassToFieldsMapper.GetFieldsFromClass(Value);
-            DictionaryContent.Fields.CollectionChanged += (sender, e) => ClassToFieldsMapper.FieldsUpdater(ref _value, sender, e);
+            DictionaryContent.Fields = _fieldsMapper.GetFieldsFromClass(Value);
+            DictionaryContent.Fields.CollectionChanged += (sender, e) => _fieldsMapper.FieldsUpdater(ref _value, sender, e);
             DialogResult = false;
         }
 
@@ -64,5 +68,8 @@ namespace WPF.Dictionaries.Dictionaries
 
     [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public class DictionaryAddEditViewModelDummy : DictionaryAddEditViewModel<int> {
+        public DictionaryAddEditViewModelDummy() : base(null)
+        {
+        }
     }
 }

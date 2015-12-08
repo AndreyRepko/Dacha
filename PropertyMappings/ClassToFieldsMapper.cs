@@ -4,30 +4,43 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using BasicDataStructures.DataStructures;
+using BasicDataStructures.Interfaces;
 using Dacha.PropertyMappings.PropertyMappings;
+using WPFUtils;
 
 namespace Dacha.PropertyMappings
 {
-    public static class ClassToFieldsMapper
+    public class ClassToFieldsMapper
     {
-        private static Dictionary<Type, Func<string,object,string, IPropertyViewModel>> _typeMaping;
+        private readonly IWorkerServices _dataServices;
+        private readonly Dictionary<Type, Func<string,object,string, IPropertyViewModel>> _simpleTypeMaping;
 
-        static ClassToFieldsMapper()
+        public ClassToFieldsMapper(IWorkerServices dataServices)
         {
-            _typeMaping = new Dictionary<Type, Func<string, object, string, IPropertyViewModel>>();
+            _dataServices = dataServices;
+            _simpleTypeMaping = new Dictionary<Type, Func<string, object, string, IPropertyViewModel>>();
 
-            _typeMaping[typeof (string)] =
-                (displayName, value, propertyName) => new StringPropertyViewModel {DisplayName = displayName, Value = (string) value, PropertyName = propertyName};
-            _typeMaping[typeof (int)] =
-                (displayName, value, propertyName) => new IntPropertyViewModel {DisplayName = displayName, Value = (int) value, PropertyName = propertyName };
-            _typeMaping[typeof(double?)] =
-                (displayName, value, propertyName) => new DoublePropertyViewModel { DisplayName = displayName, Value = (double?)value, PropertyName = propertyName };
-            _typeMaping[typeof(double)] =
-                (displayName, value, propertyName) => new DoublePropertyViewModel { DisplayName = displayName, Value = (double)value, PropertyName = propertyName };
-
+            SetupSimpleTypes();
         }
 
-        public static TrulyObservableCollection<IPropertyViewModel> GetFieldsFromClass<T>(T value)
+        private void SetupSimpleTypes()
+        {
+            _simpleTypeMaping[typeof (string)] =
+                (displayName, value, propertyName) =>
+                    new StringPropertyViewModel {DisplayName = displayName, Value = (string) value, PropertyName = propertyName};
+            _simpleTypeMaping[typeof (int)] =
+                (displayName, value, propertyName) =>
+                    new IntPropertyViewModel {DisplayName = displayName, Value = (int) value, PropertyName = propertyName};
+            _simpleTypeMaping[typeof (double?)] =
+                (displayName, value, propertyName) =>
+                    new DoublePropertyViewModel {DisplayName = displayName, Value = (double?) value, PropertyName = propertyName};
+            _simpleTypeMaping[typeof (double)] =
+                (displayName, value, propertyName) =>
+                    new DoublePropertyViewModel {DisplayName = displayName, Value = (double) value, PropertyName = propertyName};
+        }
+
+        public TrulyObservableCollection<IPropertyViewModel> GetFieldsFromClass<T>(T value)
         {
             var result = new TrulyObservableCollection<IPropertyViewModel>();
 
@@ -39,13 +52,30 @@ namespace Dacha.PropertyMappings
                 if (attributes.Length == 1)
                 {
                     var propType = prop.PropertyType;
-                    if (!_typeMaping.ContainsKey(propType))
-                        throw new Exception($"Type mapping missing for {propType}");
-                    var mapper = _typeMaping[propType];
+                    if (_simpleTypeMaping.ContainsKey(propType))
+                    {
+                        var mapper = _simpleTypeMaping[propType];
 
-                    result.Add(value != null
-                        ? mapper(attributes[0].DisplayName, prop.GetValue(value, null), prop.Name)
-                        : mapper(attributes[0].DisplayName, null, prop.Name));
+                        result.Add(value != null
+                            ? mapper(attributes[0].DisplayName, prop.GetValue(value, null), prop.Name)
+                            : mapper(attributes[0].DisplayName, null, prop.Name));
+                    }
+                    else
+                    {
+                        var link = (PropertyLink[])prop.GetCustomAttributes(typeof(PropertyLink), false);
+                        if (link.Length == 1)
+                        {
+                            Func<List<ItemPresenterViewModel>> itemsGetterResolved = 
+                                () => _dataServices.GetItemsPresenterForEntity(link[0].ClassName);
+                            result.Add(value != null
+                            ? GetLinkViewModel(attributes[0].DisplayName, prop.GetValue(value, null), prop.Name,  itemsGetterResolved)
+                            : GetLinkViewModel(attributes[0].DisplayName, null, prop.Name, itemsGetterResolved));
+                        }
+                        else
+                        {
+                            throw new Exception($"Invalid link attribute count {link.Length}");
+                        }
+                    }
                 }
                 else
                 {
@@ -56,7 +86,18 @@ namespace Dacha.PropertyMappings
             return result;
         }
 
-        public static void FieldsUpdater<T>(ref T value, object sender, NotifyCollectionChangedEventArgs e) 
+        private IPropertyViewModel GetLinkViewModel(string displayName, object value, string propertyName, 
+            Func<List<ItemPresenterViewModel>> itemsGetter)
+        {
+            return new LinkPropertyViewModel(itemsGetter)
+            {
+                DisplayName = displayName,
+                Value = (long?)value,
+                PropertyName = propertyName
+            };
+        }
+
+        public void FieldsUpdater<T>(ref T value, object sender, NotifyCollectionChangedEventArgs e) 
         {
             if (e.Action != NotifyCollectionChangedAction.Replace)
                 throw new Exception($"Invalid action: {e.Action}");
@@ -72,8 +113,15 @@ namespace Dacha.PropertyMappings
                 throw new Exception($"Item is not interfaced by is: {e.NewItems[0].GetType()}");
 
             var theProperty = properties.First(p => p.Name == item.PropertyName);
-
-            theProperty.SetValue(value, item.UntypedValue);
+            if (theProperty.IsDefined(typeof (PropertyLink), false))
+            {
+                var links = (PropertyLink[])(theProperty.GetCustomAttributes(typeof(PropertyLink), false));
+                var link = links.FirstOrDefault();
+                var linkItem = (LinkPropertyViewModel) item;
+                theProperty.SetValue(value, _dataServices.GetItemByTypeAndId(link.ClassName, linkItem.Value));
+            }
+            else
+                theProperty.SetValue(value, item.UntypedValue);
         }
     }
 }

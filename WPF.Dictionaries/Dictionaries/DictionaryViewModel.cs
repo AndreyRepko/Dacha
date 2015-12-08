@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using BasicDataStructures.Interfaces;
 using Dacha.WPFUtils;
 using WPF.Dictionaries.Factories;
 
@@ -43,7 +44,7 @@ namespace WPF.Dictionaries.Dictionaries
 
         private void Add()
         {
-            var addModel = new DictionaryAddEditViewModel<T>();
+            var addModel = new DictionaryAddEditViewModel<T>(DataServices);
             if (Presenter.PresentDicionaryAdd(addModel))
             {
                 DictionarySaver(addModel.Value);
@@ -55,7 +56,7 @@ namespace WPF.Dictionaries.Dictionaries
 
         private void Edit()
         {
-            var addModel = new DictionaryAddEditViewModel<T>(SelectedItem);
+            var addModel = new DictionaryAddEditViewModel<T>(SelectedItem, DataServices);
             if (Presenter.PresentDicionaryAdd(addModel))
             {
                 DictionarySaver(addModel.Value);
@@ -75,6 +76,7 @@ namespace WPF.Dictionaries.Dictionaries
         }
 
         public IPresenterFactory Presenter { get; set; }
+        public IWorkerServices DataServices { get; set; }
 
         protected virtual void OnPropertyChanged(string propertyName = null)
         {

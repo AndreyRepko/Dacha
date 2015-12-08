@@ -74,6 +74,10 @@
       <Project>{5909bfe7-93cf-4e5f-be22-6293368af01d}</Project>
       <Name>NHibernate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BasicDataStructures\BasicDataStructures.csproj">
+      <Project>{0504C43A-2354-4906-BC19-B211974F38BE}</Project>
+      <Name>BasicDataStructures</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PropertyMappings\PropertyMappings.csproj">
       <Project>{03C58F64-E85C-40A8-A7EF-F412B011A70D}</Project>
       <Name>PropertyMappings</Name>

@@ -98,6 +98,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BasicDataStructures\BasicDataStructures.csproj">
+      <Project>{0504C43A-2354-4906-BC19-B211974F38BE}</Project>
+      <Name>BasicDataStructures</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{472FC584-5051-44CF-BDD5-B3D1A8EBC12A}</Project>
       <Name>DataModel</Name>

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5E56B0F1-FFF7-4FB9-802A-EF83FB209CF8}</ProjectGuid>
+    <ProjectGuid>{0504C43A-2354-4906-BC19-B211974F38BE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WPF.Dictionaries</RootNamespace>
-    <AssemblyName>WPF.Dictionaries</AssemblyName>
+    <RootNamespace>BasicDataStructures</RootNamespace>
+    <AssemblyName>BasicDataStructures</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,64 +30,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dictionaries\DictionaryAddEditViewModel.cs" />
-    <Compile Include="Dictionaries\DictionaryAddWindow.xaml.cs">
-      <DependentUpon>DictionaryAddWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dictionaries\DictionaryViewModel.cs" />
-    <Compile Include="Dictionaries\DictionaryWindow.xaml.cs">
-      <DependentUpon>DictionaryWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dictionaries\DisplayDictionary.xaml.cs">
-      <DependentUpon>DisplayDictionary.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dictionaries\DisplayDictionaryViewModel.cs" />
-    <Compile Include="Factories\IPresenterFactory.cs" />
-    <Compile Include="Factories\PresenterFactory.cs" />
+    <Compile Include="DataStructures\ItemPresenterViewModel.cs" />
+    <Compile Include="Interfaces\IWorkerServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Page Include="Dictionaries\DictionaryAddWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Dictionaries\DictionaryWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Dictionaries\DisplayDictionary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BasicDataStructures\BasicDataStructures.csproj">
-      <Project>{0504C43A-2354-4906-BC19-B211974F38BE}</Project>
-      <Name>BasicDataStructures</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PropertyMappings\PropertyMappings.csproj">
-      <Project>{03C58F64-E85C-40A8-A7EF-F412B011A70D}</Project>
-      <Name>PropertyMappings</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WPFUtils\WPFUtils.csproj">
-      <Project>{3DEF1497-36D1-4863-AF64-379D7DCBA93D}</Project>
-      <Name>WPFUtils</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
