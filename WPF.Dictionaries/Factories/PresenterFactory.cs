@@ -30,12 +30,14 @@ namespace WPF.Dictionaries.Factories
 
         public bool PresentCustomForm(ICustomFormViewModel viewModel)
         {
-            var addWindow = new DictionaryAddWindow { DataContext = viewModel };
-            addWindow.ShowDialog();
-            if (!viewModel.DialogResult.HasValue)
+            var windowViewModel = new BasicWindowViewModel();
+            var customFormWindow = new BasicWindow { DataContext = windowViewModel };
+            windowViewModel.CustomFormViewModel = viewModel;
+            customFormWindow.ShowDialog();
+            if (!windowViewModel.DialogResult.HasValue)
                 throw new Exception("Dialog was closed without result");
 
-            return viewModel.DialogResult.Value;
+            return windowViewModel.DialogResult.Value;
         }
     }
 }

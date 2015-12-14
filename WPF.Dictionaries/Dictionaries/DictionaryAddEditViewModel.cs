@@ -51,7 +51,7 @@ namespace WPF.Dictionaries.Dictionaries
                 if (value != _dialogResult)
                 {
                     _dialogResult = value;
-                    OnPropertyChanged(nameof(DialogResult));
+                    NotifyPropertyChanged(nameof(DialogResult));
                 }
             }
         }
@@ -60,7 +60,7 @@ namespace WPF.Dictionaries.Dictionaries
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

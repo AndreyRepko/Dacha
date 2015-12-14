@@ -3,11 +3,11 @@
 namespace WPF.Dictionaries.CustomForms
 {
     /// <summary>
-    /// Interaction logic for BasicCustomFormView.xaml
+    /// Interaction logic for BasicWindow.xaml
     /// </summary>
-    public partial class BasicCustomFormView : Window
+    public partial class BasicWindow : Window
     {
-        public BasicCustomFormView()
+        public BasicWindow()
         {
             InitializeComponent();
         }

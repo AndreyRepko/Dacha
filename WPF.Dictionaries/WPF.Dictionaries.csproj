@@ -68,10 +68,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomForms\BasicCustomFormView.xaml.cs">
-      <DependentUpon>BasicCustomFormView.xaml</DependentUpon>
+    <Compile Include="CustomForms\BasicWindow.xaml.cs">
+      <DependentUpon>BasicWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomForms\BasicCustomFormViewModel.cs" />
+    <Compile Include="CustomForms\BasicWindowViewModel.cs" />
     <Compile Include="CustomForms\ICustomFormViewModel.cs" />
     <Compile Include="Dictionaries\DictionaryAddEditViewModel.cs" />
     <Compile Include="Dictionaries\DictionaryAddWindow.xaml.cs">
@@ -91,7 +91,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="CustomForms\BasicCustomFormView.xaml">
+    <Page Include="CustomForms\BasicWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

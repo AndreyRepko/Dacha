@@ -1,16 +1,24 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using BasicDataStructures.Interfaces;
+using Dacha.WPFUtils;
 using WPF.Dictionaries.Annotations;
 using WPF.Dictionaries.Factories;
 
 namespace WPF.Dictionaries.CustomForms
 {
-    public class BasicCustomFormViewModel: ICustomFormViewModel, INotifyPropertyChanged
+    public class BasicWindowViewModel: INotifyPropertyChanged
     {
         private IPresenterFactory _presenter;
         private IWorkerServices _dataServices;
         private bool? _dialogResult;
+        private ICustomFormViewModel _customFormViewModel;
+        private RelayCommand _okayCommand;
+
+        public BasicWindowViewModel()
+        {
+            DialogResult = false;
+        }
 
         public IPresenterFactory Presenter
         {
@@ -46,6 +54,19 @@ namespace WPF.Dictionaries.CustomForms
                 NotifyPropertyChanged(nameof(DialogResult));
             }
         }
+
+        public ICustomFormViewModel CustomFormViewModel
+        {
+            get { return _customFormViewModel; }
+            set
+            {
+                if (Equals(value, _customFormViewModel)) return;
+                _customFormViewModel = value;
+                NotifyPropertyChanged(nameof(CustomFormViewModel));
+            }
+        }
+
+        public RelayCommand OkayCommand => _okayCommand ?? (_okayCommand = new RelayCommand(() => DialogResult = true));
 
         public event PropertyChangedEventHandler PropertyChanged;
 
