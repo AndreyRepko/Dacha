@@ -8,6 +8,7 @@ using BasicDataStructures.DataStructures;
 using BasicDataStructures.Interfaces;
 using Dacha.DataModel.Domain;
 using Dacha.DataModel.NHibernate;
+using Dacha.DataModel.NHibernate.Domain;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Linq;
@@ -66,6 +67,19 @@ namespace Dacha.DataModel
                 Func<List<T>> refresher = () => session.Query<T>().ToList();
                 var services = new WorkerServices(_config, session);
                 worker(refresher, (t) => session.SaveOrUpdate(t), (t) => session.Delete(t), services);
+
+                tx.Commit();
+            }
+        }
+
+        public void DoWorkWithServices(Action<IWorkerServices> worker)
+        {
+            using (ISessionFactory factory = _config.BuildSessionFactory())
+            using (ISession session = factory.OpenSession())
+            using (ITransaction tx = session.BeginTransaction())
+            {
+                var services = new WorkerServices(_config, session);
+                worker(services);
 
                 tx.Commit();
             }

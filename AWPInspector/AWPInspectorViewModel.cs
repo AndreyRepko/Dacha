@@ -1,7 +1,12 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using BasicDataStructures.DataStructures;
 using Dacha.DataModel;
 using Dacha.DataModel.NHibernate.Domain;
+using Dacha.Inspector.CustomForms;
 using Dacha.WPFUtils;
+using WPF.Dictionaries;
+using WPF.Dictionaries.CustomForms;
 using WPF.Dictionaries.Dictionaries;
 using WPF.Dictionaries.Factories;
 
@@ -21,6 +26,7 @@ namespace Dacha.Inspector
         private readonly IPresenterFactory _presenter;
         private RelayCommand _placesCommand;
         private RelayCommand _ownersCommand;
+        private RelayCommand _carsLoggingCommand;
 
         public RelayCommand ExitCommand => _exitCommand ?? (_exitCommand = new RelayCommand(Exit));
 
@@ -29,6 +35,21 @@ namespace Dacha.Inspector
         public RelayCommand PlacesCommand => _placesCommand ?? (_placesCommand = new RelayCommand(OpenDictionary<Places>));
 
         public RelayCommand OwnersCommand => _ownersCommand ?? (_ownersCommand = new RelayCommand(OpenDictionary<Owner>));
+
+        public RelayCommand CarsLogging => _carsLoggingCommand ?? (_carsLoggingCommand = new RelayCommand(OpenCustomForm<CarsLogging>));
+
+        private void OpenCustomForm<T>() where T : ICustomFormViewModel, new()
+        { 
+            _db.DoWorkWithServices((services) =>
+            {
+                var viewModel = new T
+                {
+                    Presenter = _presenter,
+                    DataServices = services
+                };
+                _presenter.PresentCustomForm(viewModel);
+            });
+        }
 
         private void OpenDictionary<T>() where T : new()
         {

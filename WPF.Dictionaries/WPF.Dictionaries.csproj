@@ -68,6 +68,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomForms\BasicCustomFormView.xaml.cs">
+      <DependentUpon>BasicCustomFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomForms\BasicCustomFormViewModel.cs" />
+    <Compile Include="CustomForms\ICustomFormViewModel.cs" />
     <Compile Include="Dictionaries\DictionaryAddEditViewModel.cs" />
     <Compile Include="Dictionaries\DictionaryAddWindow.xaml.cs">
       <DependentUpon>DictionaryAddWindow.xaml</DependentUpon>
@@ -82,9 +87,14 @@
     <Compile Include="Dictionaries\DisplayDictionaryViewModel.cs" />
     <Compile Include="Factories\IPresenterFactory.cs" />
     <Compile Include="Factories\PresenterFactory.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="CustomForms\BasicCustomFormView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dictionaries\DictionaryAddWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

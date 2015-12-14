@@ -1,4 +1,5 @@
 ﻿using System;
+using WPF.Dictionaries.CustomForms;
 using WPF.Dictionaries.Dictionaries;
 
 namespace WPF.Dictionaries.Factories
@@ -25,6 +26,16 @@ namespace WPF.Dictionaries.Factories
         {
             //TODO: Ask user before deletion!
             return true;
+        }
+
+        public bool PresentCustomForm(ICustomFormViewModel viewModel)
+        {
+            var addWindow = new DictionaryAddWindow { DataContext = viewModel };
+            addWindow.ShowDialog();
+            if (!viewModel.DialogResult.HasValue)
+                throw new Exception("Dialog was closed without result");
+
+            return viewModel.DialogResult.Value;
         }
     }
 }

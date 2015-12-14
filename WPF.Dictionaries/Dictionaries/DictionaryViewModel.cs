@@ -11,8 +11,6 @@ namespace WPF.Dictionaries.Dictionaries
 {
     public class DictionaryViewModel<T> : INotifyPropertyChanged where T : new()
     {
-        private List<T> _dictionary;
-
         private RelayCommand _addCommand;
         private RelayCommand _editCommand;
         private RelayCommand _removeCommand;

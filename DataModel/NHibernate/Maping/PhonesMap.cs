@@ -1,4 +1,5 @@
 using Dacha.DataModel.Domain;
+using Dacha.DataModel.NHibernate.Domain;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 

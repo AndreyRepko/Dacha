@@ -95,9 +95,17 @@
       <DependentUpon>AWPInspector.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="CustomForms\CarLoggingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AWPInspectorViewModel.cs" />
+    <Compile Include="CustomForms\CarLoggingWindow.xaml.cs">
+      <DependentUpon>CarLoggingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomForms\CarsLogging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

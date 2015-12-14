@@ -15,6 +15,7 @@
                 <MenuItem Header="Owners" Command="{Binding OwnersCommand}"/>
                 <MenuItem Header="Item1">Item1</MenuItem>
             </MenuItem>
+            <MenuItem Header ="_Cars logging" Command="{Binding CarsLogging}"/>
             <MenuItem Header="_Exit" Command="{Binding ExitCommand}">
             </MenuItem>
         </Menu>
