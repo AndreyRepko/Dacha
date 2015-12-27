@@ -86,7 +86,7 @@ namespace Dacha.DataModel
         }
     }
 
-    public class WorkerServices: IWorkerServices
+    public class WorkerServices: IDomainDataAcces
     {
         private readonly Configuration _config;
         private readonly ISession _session;
@@ -121,6 +121,11 @@ namespace Dacha.DataModel
         public object GetItemByTypeAndId(Type entity, long? id)
         {
             return _session.Get(entity, id);
+        }
+
+        public Cars SearchForCarNumber(string[] splitCarNumber)
+        {
+            throw new NotImplementedException();
         }
     }
 }

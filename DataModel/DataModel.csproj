@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database.cs" />
+    <Compile Include="IDomainDataAcces.cs" />
     <Compile Include="NHibernate\Domain\Cars.cs" />
     <Compile Include="NHibernate\Domain\ElecticityCheck.cs" />
     <Compile Include="NHibernate\Domain\Electricity.cs" />

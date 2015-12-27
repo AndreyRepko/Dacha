@@ -6,9 +6,14 @@
              xmlns:dictionaries="clr-namespace:WPF.Dictionaries.Dictionaries;assembly=WPF.Dictionaries"
              xmlns:propertyMappings="clr-namespace:Dacha.PropertyMappings.PropertyMappings;assembly=PropertyMappings"
              xmlns:propertyPresenters="clr-namespace:Dacha.PropertyMappings.PropertyPresenters;assembly=PropertyMappings"
+             xmlns:customForms="clr-namespace:Dacha.Inspector.CustomForms"
              StartupUri="AWPInspector.xaml">
     <Application.Resources>
         <inspector:AWPInspectorViewModel x:Key="AWPInspectorViewModel" />
+        
+        <DataTemplate DataType="{x:Type customForms:CarsLogging}">
+            <customForms:CarLoggingView/>
+        </DataTemplate>
         
         <DataTemplate DataType="{x:Type dictionaries:DisplayDictionaryViewModel}">
             <dictionaries:DisplayDictionary/>
