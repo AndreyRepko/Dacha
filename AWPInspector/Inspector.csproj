@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="CustomForms\CarLogging\CarNumberHelper.cs" />
     <Compile Include="CustomForms\CarLogging\CarsLogging.cs" />
+    <Compile Include="CustomForms\IDomainSpecificCustomForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

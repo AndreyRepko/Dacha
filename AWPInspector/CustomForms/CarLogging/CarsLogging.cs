@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using BasicDataStructures.Interfaces;
 using Dacha.DataModel;
@@ -9,10 +10,12 @@ using WPF.Dictionaries.Factories;
 
 namespace Dacha.Inspector.CustomForms
 {
-    internal class CarsLogging : ICustomFormViewModel
+    internal class CarsLogging : IDomainSpecificCustomForm
     {
         private string _enteredCarNumber;
+        private string _foundNumber;
         public IPresenterFactory Presenter { get; set; }
+
         public IDomainDataAcces DataServices { get; set; }
 
         public string EnteredCarNumber
@@ -27,10 +30,22 @@ namespace Dacha.Inspector.CustomForms
             }
         }
 
+        public string FoundNumber
+        {
+            get { return _foundNumber; }
+            set
+            {
+                if (value == _foundNumber) return;
+                _foundNumber = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         private void StartLookingForTheCar()
         {
             var splitCarNumber = CarNumberHelper.SplitToMajorParts(_enteredCarNumber);
             var foundNumber = DataServices.SearchForCarNumber(splitCarNumber);
+            FoundNumber = foundNumber.FirstOrDefault()?.Number;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

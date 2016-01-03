@@ -1,4 +1,5 @@
-﻿using BasicDataStructures.Interfaces;
+﻿using System.Collections.Generic;
+using BasicDataStructures.Interfaces;
 using Dacha.DataModel.NHibernate.Domain;
 
 namespace Dacha.DataModel
@@ -6,6 +7,6 @@ namespace Dacha.DataModel
     public interface IDomainDataAcces : IWorkerServices
 
     {
-        Cars SearchForCarNumber(string[] splitCarNumber);
+        IList<Cars> SearchForCarNumber(string[] splitCarNumber);
     }
 }

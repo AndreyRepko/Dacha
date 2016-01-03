@@ -38,7 +38,7 @@ namespace Dacha.Inspector
 
         public RelayCommand CarsLogging => _carsLoggingCommand ?? (_carsLoggingCommand = new RelayCommand(OpenCustomForm<CarsLogging>));
 
-        private void OpenCustomForm<T>() where T : ICustomFormViewModel, new()
+        private void OpenCustomForm<T>() where T : IDomainSpecificCustomForm, new()
         { 
             _db.DoWorkWithServices((services) =>
             {

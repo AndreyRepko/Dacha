@@ -72,7 +72,7 @@ namespace Dacha.DataModel
             }
         }
 
-        public void DoWorkWithServices(Action<IWorkerServices> worker)
+        public void DoWorkWithServices(Action<IDomainDataAcces> worker)
         {
             using (ISessionFactory factory = _config.BuildSessionFactory())
             using (ISession session = factory.OpenSession())
@@ -123,9 +123,14 @@ namespace Dacha.DataModel
             return _session.Get(entity, id);
         }
 
-        public Cars SearchForCarNumber(string[] splitCarNumber)
+        public IList<Cars> SearchForCarNumber(string[] splitCarNumber)
         {
-            throw new NotImplementedException();
+            var sql = "SELECT * FROM cars WHERE NUMBER like :number ";
+            var query = _session.CreateSQLQuery(sql);
+            query.SetParameter("number", "%"+splitCarNumber[0]+"%");
+            var result = query.List<Cars>();
+
+            return result;
         }
     }
 }
